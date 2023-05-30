@@ -1,4 +1,4 @@
-package hexlet.code.config.securuty;
+package hexlet.code.config.security;
 
 import hexlet.code.component.JWTHelper;
 import hexlet.code.filter.JWTAuthenticationFilter;
