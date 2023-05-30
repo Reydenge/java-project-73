@@ -1,0 +1,206 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: reydenge
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: usersPK
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: firstName
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: lastName
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: TIMESTAMP
+  - changeSet:
+      id: 2
+      author: reydenge
+      changes:
+        - createTable:
+            tableName: task_statuses
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: task_statusesPK
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: TIMESTAMP
+  - changeSet:
+      id: 3
+      author: reydenge
+      changes:
+        - createTable:
+            tableName: tasks
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: tasksPK
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: task_status_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: author_id
+                  type: BIGINT
+              - column:
+                  name: executor_id
+                  type: BIGINT
+              - column:
+                  name: createdAt
+                  type: TIMESTAMP
+  - changeSet:
+      id: 4
+      author: reydenge
+      changes:
+        - createTable:
+            tableName: labels
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: labelsPK
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: createdAt
+                  type: TIMESTAMP
+  - changeSet:
+      id: 5
+      author: reydenge
+      changes:
+        - createTable:
+            tableName: tasks_labels
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: tasks_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: label_id
+                  type: BIGINT
+  - changeSet:
+      id: 6
+      author: reydenge
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: author_id
+            baseTableName: tasks
+            constraintName: FK6xvn0811tkyo3nfjk2xvqx6ns
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 7
+      author: reydenge
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: executor_id
+            baseTableName: tasks
+            constraintName: FK7xndk7y2uk29wdu734xyutbqe
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 8
+      author: reydenge
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: task_status_id
+            baseTableName: tasks
+            constraintName: FK8xndk7y2uk29wdu734xyutbqe
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 9
+      author: reydenge
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: label_id
+            baseTableName: tasks_labels
+            constraintName: FK5eg3urx4p1n0hkcqv8x04wibn
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: labels
+            validate: true
+  - changeSet:
+      id: 10
+      author: reydenge
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: tasks_id
+            baseTableName: tasks_labels
+            constraintName: FK9qrs86gyw7ctgqiwqvr9jkf0l
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: tasks
+            validate: true
