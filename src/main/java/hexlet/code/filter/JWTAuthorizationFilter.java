@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 
-import static hexlet.code.config.securuty.SecurityConfig.DEFAULT_AUTHORITY;
+import static hexlet.code.config.security.SecurityConfig.DEFAULT_AUTHORITY;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY;
 
