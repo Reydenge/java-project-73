@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -26,6 +25,4 @@ public class TaskDto {
     private Long executorId;
 
     private List<Long> labelIds;
-
-    private Date createdAt;
 }
