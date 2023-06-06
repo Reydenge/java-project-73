@@ -7,7 +7,7 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
 
-rollbar_token: ${ROLLBAR_TOKEN}
+rollbar_token: d13cf54f5e6046f98373e5f23b9a9a07
 
 spring:
   application:
@@ -24,4 +24,4 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
