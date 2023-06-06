@@ -17,12 +17,12 @@ databaseChangeLog:
               - column:
                   constraints:
                     nullable: false
-                  name: firstName
+                  name: first_name
                   type: VARCHAR(255)
               - column:
                   constraints:
                     nullable: false
-                  name: lastName
+                  name: last_name
                   type: VARCHAR(255)
               - column:
                   constraints:
@@ -35,7 +35,7 @@ databaseChangeLog:
                   name: password
                   type: VARCHAR(255)
               - column:
-                  name: createdAt
+                  name: created_at
                   type: TIMESTAMP
   - changeSet:
       id: 2
@@ -58,7 +58,7 @@ databaseChangeLog:
                   name: name
                   type: VARCHAR(255)
               - column:
-                  name: createdAt
+                  name: created_at
                   type: TIMESTAMP
   - changeSet:
       id: 3
@@ -97,7 +97,7 @@ databaseChangeLog:
                   name: executor_id
                   type: BIGINT
               - column:
-                  name: createdAt
+                  name: created_at
                   type: TIMESTAMP
   - changeSet:
       id: 4
@@ -120,7 +120,7 @@ databaseChangeLog:
                   name: name
                   type: VARCHAR(255)
               - column:
-                  name: createdAt
+                  name: created_at
                   type: TIMESTAMP
   - changeSet:
       id: 5
@@ -132,12 +132,12 @@ databaseChangeLog:
               - column:
                   constraints:
                     nullable: false
-                  name: tasks_id
+                  name: task_id
                   type: BIGINT
               - column:
                   constraints:
                     nullable: false
-                  name: label_id
+                  name: labels_id
                   type: BIGINT
   - changeSet:
       id: 6
@@ -164,43 +164,4 @@ databaseChangeLog:
             initiallyDeferred: false
             referencedColumnNames: id
             referencedTableName: users
-            validate: true
-  - changeSet:
-      id: 8
-      author: reydenge
-      changes:
-        - addForeignKeyConstraint:
-            baseColumnNames: task_status_id
-            baseTableName: tasks
-            constraintName: FK8xndk7y2uk29wdu734xyutbqe
-            deferrable: false
-            initiallyDeferred: false
-            referencedColumnNames: id
-            referencedTableName: users
-            validate: true
-  - changeSet:
-      id: 9
-      author: reydenge
-      changes:
-        - addForeignKeyConstraint:
-            baseColumnNames: label_id
-            baseTableName: tasks_labels
-            constraintName: FK5eg3urx4p1n0hkcqv8x04wibn
-            deferrable: false
-            initiallyDeferred: false
-            referencedColumnNames: id
-            referencedTableName: labels
-            validate: true
-  - changeSet:
-      id: 10
-      author: reydenge
-      changes:
-        - addForeignKeyConstraint:
-            baseColumnNames: tasks_id
-            baseTableName: tasks_labels
-            constraintName: FK9qrs86gyw7ctgqiwqvr9jkf0l
-            deferrable: false
-            initiallyDeferred: false
-            referencedColumnNames: id
-            referencedTableName: tasks
             validate: true
