@@ -124,7 +124,7 @@ public class TaskControllerTest {
         assertEquals(task.getDescription(), taskDto.getDescription());
         assertEquals(task.getExecutor().getId(), taskDto.getExecutorId());
         assertEquals(task.getTaskStatus().getId(), taskDto.getTaskStatusId());
-        assertEquals(task.getLabelIds().stream().map(Label::getId).collect(Collectors.toList()), taskDto.getLabelIds());
+        assertEquals(task.getLabels().stream().map(Label::getId).collect(Collectors.toList()), taskDto.getLabelIds());
     }
 
 
@@ -187,7 +187,7 @@ public class TaskControllerTest {
         assertEquals(task.getDescription(), taskDto.getDescription());
         assertEquals(task.getExecutor().getId(), taskDto.getExecutorId());
         assertEquals(task.getTaskStatus().getId(), taskDto.getTaskStatusId());
-        assertEquals(task.getLabelIds().stream().map(Label::getId).collect(Collectors.toList()), taskDto.getLabelIds());
+        assertEquals(task.getLabels().stream().map(Label::getId).collect(Collectors.toList()), taskDto.getLabelIds());
     }
 
 
