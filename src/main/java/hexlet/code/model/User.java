@@ -9,7 +9,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Temporal;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -20,7 +19,6 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
-import java.util.List;
 
 import static jakarta.persistence.TemporalType.TIMESTAMP;
 
@@ -58,16 +56,8 @@ public class User {
 
     @CreationTimestamp
     @Temporal(TIMESTAMP)
-    @Column(name = "createdAt")
+    @Column(name = "created_at")
     private Date createdAt;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "author")
-    private List<Task> authorTasks;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "executor")
-    private List<Task> executorTasks;
 
     public User(long id) {
         this.id = id;

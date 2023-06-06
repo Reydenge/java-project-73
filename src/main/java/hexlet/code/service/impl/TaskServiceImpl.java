@@ -8,6 +8,8 @@ import hexlet.code.model.Task;
 import hexlet.code.model.TaskStatus;
 import hexlet.code.model.User;
 import hexlet.code.repository.TaskRepository;
+import hexlet.code.repository.UserRepository;
+import hexlet.code.service.LabelService;
 import hexlet.code.service.TaskService;
 import hexlet.code.service.TaskStatusService;
 import hexlet.code.service.UserService;
@@ -27,7 +29,9 @@ import java.util.stream.StreamSupport;
 public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
     private final UserService userService;
+    private final UserRepository userRepository;
     private final TaskStatusService taskStatusService;
+    private final LabelService labelService;
 
     @Override
     public Task createNewTask(TaskDto taskDto) {
@@ -65,25 +69,25 @@ public class TaskServiceImpl implements TaskService {
 
     private Task constructFromDto(TaskDto taskDto) {
         User executor = Optional.ofNullable(taskDto.getExecutorId())
-                .map(User::new)
+                .map(userService::getUserById)
                 .orElse(null);
 
         TaskStatus taskStatus = Optional.of(taskDto.getTaskStatusId())
-                .map(TaskStatus::new)
+                .map(taskStatusService::getTaskStatusById)
                 .orElse(null);
 
         List<Label> labels = Optional.ofNullable(taskDto.getLabelIds())
                 .orElse(List.of())
                 .stream()
                 .filter(Objects::nonNull)
-                .map(Label::new)
+                .map(labelService::getLabelById)
                 .collect(Collectors.toList());
 
         return Task.builder()
                 .author(userService.getCurrentUser())
                 .executor(executor)
                 .taskStatus(taskStatusService.getTaskStatusById(taskDto.getTaskStatusId()))
-                .labelIds(labels)
+                .labels(labels)
                 .name(taskDto.getName())
                 .description(taskDto.getDescription())
                 .build();

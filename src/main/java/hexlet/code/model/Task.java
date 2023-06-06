@@ -10,7 +10,6 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -62,16 +61,11 @@ public class Task {
 
     @CreationTimestamp
     @Temporal(TIMESTAMP)
-    @Column(name = "createdAt")
+    @Column(name = "created_at")
     private Date createdAt;
 
     @ManyToMany
-    @JoinTable(
-            name = "tasks_labels",
-            joinColumns = @JoinColumn(name = "task_id"),
-            inverseJoinColumns = @JoinColumn(name = "label_id")
-    )
-    private List<Label> labelIds;
+    private List<Label> labels;
 
     public Task(Long id) {
         this.id = id;

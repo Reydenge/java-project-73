@@ -90,7 +90,7 @@ public class UserController {
             @ApiResponse(responseCode = "404", description = "The user is not found", content = @Content),
             @ApiResponse(responseCode = "403", description = "Forbidden to delete", content = @Content),
             @ApiResponse(responseCode = "422", description = "Data integrity violation", content = @Content)})
-    @PreAuthorize((OWNER))
+    @PreAuthorize(OWNER)
     @DeleteMapping(path = ID)
     public void deleteUser(@PathVariable(name = "id") long id) {
         userRepository.deleteById(id);
