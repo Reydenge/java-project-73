@@ -87,15 +87,19 @@ wrapper {
 liquibase {
     activities {
         main {
-            changelogFile 'src/main/resources/db/changelog/db.changelog-master.yaml'
+            changelogFile 'src/main/resources/db/changelog/changelog-master.xml'
             url 'jdbc:h2:mem:project73db'
             username 'sa'
             password 'sa'
-            referenceUrl 'hibernate:spring:io.hexlet.javaspringblog.model.' +
+            referenceUrl 'hibernate:spring:hexlet.code.model.' +
                     '?dialect=org.hibernate.dialect.H2Dialect' +
                     '&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy'
         }
     }
+}
+
+diffChangelog {
+    dependsOn compileJava
 }
 
 frontend {
@@ -129,10 +133,6 @@ processResources.dependsOn assembleFrontend
 
 tasks.named('test') {
     useJUnitPlatform()
-}
-
-diffChangelog {
-    dependsOn compileJava
 }
 
 jacocoTestReport {
