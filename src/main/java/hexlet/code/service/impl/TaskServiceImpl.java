@@ -86,10 +86,11 @@ public class TaskServiceImpl implements TaskService {
         return Task.builder()
                 .author(userService.getCurrentUser())
                 .executor(executor)
-                .taskStatus(taskStatusService.getTaskStatusById(taskDto.getTaskStatusId()))
+                .taskStatus(taskStatus)
                 .labels(labels)
                 .name(taskDto.getName())
                 .description(taskDto.getDescription())
+                .createdAt(taskDto.getCreatedAt())
                 .build();
     }
 }

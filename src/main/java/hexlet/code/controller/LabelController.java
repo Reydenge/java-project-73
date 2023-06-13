@@ -47,7 +47,7 @@ public class LabelController {
             content = @Content(schema = @Schema(implementation = Label.class)))
     @GetMapping()
     public List<Label> getAllLabel() {
-        return labelService.getAllLabel().stream().toList();
+        return labelService.getAllLabel();
     }
 
     @Operation(summary = "Get label by id")
