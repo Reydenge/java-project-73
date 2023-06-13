@@ -90,7 +90,6 @@ public class TaskServiceImpl implements TaskService {
                 .labels(labels)
                 .name(taskDto.getName())
                 .description(taskDto.getDescription())
-                .createdAt(taskDto.getCreatedAt())
                 .build();
     }
 }
