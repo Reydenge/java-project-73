@@ -96,6 +96,7 @@ public class SecurityConfig {
                 .sessionManagement().disable()
                 .logout().disable();
 
+        http.headers().frameOptions().disable();
         return http.build();
     }
 }
