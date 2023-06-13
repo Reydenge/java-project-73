@@ -10,11 +10,16 @@ springdoc:
 rollbar_token: d13cf54f5e6046f98373e5f23b9a9a07
 
 spring:
+  datasource:
+    url: "jdbc:h2:./project73db"
+    username: sa
+    password: sa
+    driverClassName: org.h2.Driver
   application:
     name: app
 
   liquibase:
-    enabled: true
+    enabled: false
     change-log: classpath:db/changelog/changelog-master.xml
 
   mvc:
@@ -24,4 +29,4 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update

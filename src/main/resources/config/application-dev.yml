@@ -8,7 +8,7 @@ springdoc:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:project73db
+    url: "jdbc:h2:./project73db"
     username: sa
     password: sa
     driverClassName: org.h2.Driver
