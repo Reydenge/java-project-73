@@ -24,6 +24,4 @@ public class TaskDto {
     private Long executorId;
 
     private List<Long> labelIds;
-
-    private Date createdAt;
 }
