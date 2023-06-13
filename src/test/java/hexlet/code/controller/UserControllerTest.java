@@ -77,7 +77,7 @@ public class UserControllerTest {
                 .content(asJson(userDto))
                 .contentType(APPLICATION_JSON);
 
-        utils.perform(postRequest, FIRST_TEST_USERNAME).andExpect(status().is(400));
+        utils.perform(postRequest, FIRST_TEST_USERNAME).andExpect(status().is(422));
     }
 
 
@@ -90,7 +90,7 @@ public class UserControllerTest {
                 .content(asJson(userDto))
                 .contentType(APPLICATION_JSON);
 
-        utils.perform(postRequest, FIRST_TEST_USERNAME).andExpect(status().is(400));
+        utils.perform(postRequest, FIRST_TEST_USERNAME).andExpect(status().is(422));
     }
 
 
@@ -103,7 +103,7 @@ public class UserControllerTest {
                 .content(asJson(userDto))
                 .contentType(APPLICATION_JSON);
 
-        utils.perform(postRequest, FIRST_TEST_USERNAME).andExpect(status().is(400));
+        utils.perform(postRequest, FIRST_TEST_USERNAME).andExpect(status().is(422));
     }
 
 

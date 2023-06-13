@@ -121,7 +121,7 @@ public class TaskStatusControllerTest {
                 .contentType(APPLICATION_JSON);
 
         utils.perform(postRequest, TestUtils.FIRST_TEST_USERNAME)
-                .andExpect(status().is(400));
+                .andExpect(status().is(422));
 
         assertEquals(0, statusRepository.count());
     }
